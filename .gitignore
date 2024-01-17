@@ -64,3 +64,5 @@ bower_components
 
 # Output of 'npm pack'
 *.tgz
+
+.env

@@ -27,15 +27,11 @@ module.exports.authMiddleware = (req, res, next) => {
 
   try {
     req.user = jwt.verify(token, JWT_SECRET);
-    next();
+    return next();
   }
   catch (err) {
     return res.status(400).json({
       message: `Token is not valid. ${err}`
     });
   }
-
-  return res.status(400).json({
-    message: 'Unexpeected Auth error. Access denied.'
-  });
 };
