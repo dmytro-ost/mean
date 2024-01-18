@@ -1,0 +1,25 @@
+{
+  "name": "ostretsov-magister-2025",
+  "version": "1.0.0",
+  "description": "Unniversity work",
+  "main": "index.js",
+  "scripts": {
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "server": "npm --prefix ./backend run start",
+    "client": "npm --prefix ./frontend run start",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmytro-ost/mean.git"
+  },
+  "author": "Dmytro Ostretsov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dmytro-ost/mean/issues"
+  },
+  "homepage": "https://github.com/dmytro-ost/mean#readme",
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
