@@ -1,0 +1,56 @@
+<div class="container">
+  <mat-tab-group>
+    <mat-tab label="Увійти">
+      <form [formGroup]="loginForm" (ngSubmit)="login()" class="form">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="name@example.com" formControlName="email" required>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Пароль</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>
+              {{hide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+          </button>
+        </mat-form-field>
+        <br>
+        <button type="submit" mat-raised-button color="primary">
+          Увійти
+        </button>
+      </form>
+    </mat-tab>
+    <mat-tab label="Зареєструватися">
+      <form [formGroup]="registrationForm" (ngSubmit)="registerNewUser()" class="form">
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Email</mat-label>
+          <input type="email" matInput placeholder="name@example.com" formControlName="email"  required>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Пароль</mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"  required>
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Сховати пароль'"
+            [attr.aria-pressed]="hide">
+            <mat-icon>
+              {{hide ? 'visibility_off' : 'visibility'}}
+            </mat-icon>
+          </button>
+        </mat-form-field>
+        <br>
+        <mat-form-field class="full-width" appearance="fill">
+          <mat-label>Вибери свою роль</mat-label>
+          <mat-select name="role" formControlName="role" required>
+            <mat-option value="SHIPPER">Я відправляю вантаж</mat-option>
+            <mat-option value="DRIVER">Я доставляю вантаж</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <br>
+        <button type="submit" mat-raised-button color="primary">Зареєструватися</button>
+      </form>
+    </mat-tab>
+  </mat-tab-group>
+</div>

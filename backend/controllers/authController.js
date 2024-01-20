@@ -41,7 +41,7 @@ const register = async (req, res) => {
 
     if (currentUser) {
       return res.status(400).json({
-        message: 'User already exists'
+        message: 'Такий користувач вже зареєєстрований'
       });
     }
 
@@ -53,7 +53,7 @@ const register = async (req, res) => {
     await user.save();
 
     return res.status(200).json({
-      message: 'Profile created successfully'
+      message: 'Профайл зареєстровано'
     });
   }
   catch (error) {

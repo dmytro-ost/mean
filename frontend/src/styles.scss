@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+@import '~ngx-toastr/toastr';
+@import '~@angular/material/theming';
+@import './scss/colors.scss';
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+h1 {
+  font-size: 1.75rem;
+  font-family: system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+  font-weight: 500;
+  margin: 0;
+}
+
