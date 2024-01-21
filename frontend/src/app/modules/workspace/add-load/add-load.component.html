@@ -1,0 +1,36 @@
+<form [formGroup]="createPayloadForm" (ngSubmit)="createPayload()" class="form">
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Вантаж</mat-label>
+    <input type="text" matInput placeholder="Назва вантажу..." formControlName="name" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Вага, кг</mat-label>
+    <input matInput type="number" formControlName="payload" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Забрати за адресою</mat-label>
+    <input type="text" matInput placeholder="Полтава, вул.Коваля, 3" formControlName="pickup" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="full-width" appearance="fill">
+    <mat-label>Доставити за адресою</mat-label>
+    <input type="text" matInput placeholder="Полтава, вул.Сінна, 21" formControlName="delivery" required>
+  </mat-form-field>
+  <br>
+  <mat-form-field class="column" appearance="fill">
+    <mat-label>Ширина</mat-label>
+    <input matInput type="number" formControlName="width" required>
+  </mat-form-field>
+  <mat-form-field class="column" appearance="fill">
+    <mat-label>Довжина</mat-label>
+    <input type="number" matInput formControlName="length" required>
+  </mat-form-field>
+  <mat-form-field class="column" appearance="fill">
+    <mat-label>Висота</mat-label>
+    <input type="number" matInput formControlName="height" required>
+  </mat-form-field>
+  <br>
+  <button type="submit" mat-raised-button color="primary">Створити замовлення</button>
+</form>

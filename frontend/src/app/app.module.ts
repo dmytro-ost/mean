@@ -6,13 +6,11 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ContainerComponent } from './modules/container/container.component';
 import { MainContentComponent } from './modules/container/main-content/main-content.component';
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SharedModule } from './shared/shared.module';
 import { ToastrModule, ToastrService } from 'ngx-toastr';
-
 import { NotificationService } from './services/notification.service';
-import { JwtModule } from "@auth0/angular-jwt";
-import { tokenGetter } from './services/auth.service';
+import { JwtTokenInterceptor } from './core/jwt-token.interceptor';
 
 @NgModule({
   declarations: [
@@ -26,13 +24,6 @@ import { tokenGetter } from './services/auth.service';
     SharedModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    JwtModule.forRoot({
-      config: {
-        tokenGetter: tokenGetter,
-        allowedDomains: ['localhost'],
-        disallowedRoutes: [],
-      },
-    }),
     AppRoutingModule
   ],
   providers: [
@@ -41,6 +32,11 @@ import { tokenGetter } from './services/auth.service';
       useFactory: (service: NotificationService) => service,
       deps: [NotificationService]
     },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: JwtTokenInterceptor,
+      multi: true
+    }
   ],
   bootstrap: [AppComponent]
 })

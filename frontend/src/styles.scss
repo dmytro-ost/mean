@@ -1,10 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
-@import '~ngx-toastr/toastr';
-@import '~@angular/material/theming';
+@import 'ngx-toastr/toastr';
+@import '@angular/material/theming';
 @import './scss/colors.scss';
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; padding: 0;font-family: Roboto, "Helvetica Neue", sans-serif; }
 
 h1 {
   font-size: 1.75rem;
@@ -13,3 +13,6 @@ h1 {
   margin: 0;
 }
 
+.btn:hover {
+    background-color: #3a2cc1;
+}

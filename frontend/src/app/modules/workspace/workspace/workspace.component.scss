@@ -1,0 +1,34 @@
+.container {
+  width: 100%;
+  height: 100%;
+}
+
+header{
+  padding: 25px;
+}
+
+article {
+  height: calc(100vh - 86px);
+  display: flex;
+}
+
+nav,
+section {
+  border: 1px solid black;
+  padding: 10px;
+}
+
+nav {
+  flex-basis: 200px;
+  background-color: orange;
+
+  .btn {
+    width: 100%;
+    margin-bottom: 5px;
+
+  }
+}
+
+section {
+  flex-grow: 1;
+}

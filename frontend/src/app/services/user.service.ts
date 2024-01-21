@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpService } from './http.service';
 import config from 'src/config';
-import {  User } from '../models/user.mode';
+import {  User } from '../models/user.model';
 import { Observable } from 'rxjs';
 import { ResponseJWT, ServerResponseMsg } from '../models/message.model';
 

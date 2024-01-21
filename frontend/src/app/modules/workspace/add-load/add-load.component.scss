@@ -1,0 +1,21 @@
+.form {
+  width: 700px;
+
+  .full-width {
+    width: 100%;
+  }
+
+  .column {
+    width: 33.3%;
+  }
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
+}

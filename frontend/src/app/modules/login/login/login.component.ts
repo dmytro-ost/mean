@@ -4,7 +4,7 @@ import { Router } from '@angular/router';
 import { EMPTY, catchError, switchMap } from 'rxjs';
 import { map } from 'rxjs/internal/operators/map';
 import { WORKSPACE_ROUTE } from 'src/app/core/constants';
-import { User } from 'src/app/models/user.mode';
+import { User } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 import { LocalStorageService } from 'src/app/services/local-storage.service';
 import { NotificationService } from 'src/app/services/notification.service';

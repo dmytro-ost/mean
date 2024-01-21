@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { ACCESS_TOKEN_KEY_NAME } from '../core/constants';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class LocalStorageService {
   // private STORAGE_KEY = 'photo_lib';
@@ -19,7 +19,11 @@ export class LocalStorageService {
     window.localStorage.setItem(ACCESS_TOKEN_KEY_NAME, token);
   }
 
+  public getToken() {
+    return localStorage.getItem(ACCESS_TOKEN_KEY_NAME);
+  }
+
   public removeToken() {
-      window.localStorage.removeItem(ACCESS_TOKEN_KEY_NAME);
+    window.localStorage.removeItem(ACCESS_TOKEN_KEY_NAME);
   }
 }
