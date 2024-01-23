@@ -37,3 +37,18 @@ export interface LoadsList {
     }
   ];
 }
+
+export interface LoadsListTable {
+  _id: string;
+  name: string;
+  created_date: string;
+  payload: number;
+  status: string;
+  pickup_address: string;
+  delivery_address: string;
+  dimensions: {
+    width: number;
+    length: number;
+    height: number;
+  };
+}

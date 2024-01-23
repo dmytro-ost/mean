@@ -436,8 +436,6 @@ const updateLoadByID = async (req, res) => {
       });
     }
 
-    console.log(`Load ${loadId} was updated`);
-
     return res.json({
       message: 'Load updated successfully'
     });
@@ -484,7 +482,7 @@ const deleteLoadByID = async (req, res) => {
     });
   }
 
-  if (load.created_by !== req.user._id) {
+  if (load.created_by.toString() !== req.user._id) {
     return res.status(400).json({
       message: 'You have no right to do this'
     });

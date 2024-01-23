@@ -26,25 +26,26 @@ export class LoadService {
     limit?: number,
     offset?: number
   ): Observable<LoadsList> {
-    const params = new HttpParams();
-    // .set('status', status || '')
-    // .set('limit', limit || 0)
-    // .set('offset', offset || 0);
-    status ? params.set('status', status) : null;
-    limit ? params.set('limit', limit) : null;
-    offset ? params.set('offset', offset) : null;
+    const params = new HttpParams()
+      .set('status', status || '')
+      .set('limit', limit || 0)
+      .set('offset', offset || 0);
 
-    return this.httpService.get<LoadsList>(`${this.baseUrl}/loads/`, { params });
+    return this.httpService.get<LoadsList>(`${this.baseUrl}/loads/`, {
+      params,
+    });
+  }
 
-    // http://localhost:8080/api/loads?status=sdf&limit=23&offset=22
+  public searchForDrivers(loadId: string): Observable<ServerResponseMsg> {
+    return this.httpService.post<ServerResponseMsg>(
+      `${this.baseUrl}/loads/${loadId}/post/`,
+      null
+    );
+  }
+
+  public deleteLoad(loadId: string): Observable<ServerResponseMsg> {
+    return this.httpService.delete<ServerResponseMsg>(
+      `${this.baseUrl}/loads/${loadId}/`
+    );
   }
 }
-
-// const params = new HttpParams()
-// .set('isbn', isbn)
-//   .set('companyCode', companyCode);
-
-// public getSalesChannelTable(isbn: string, channels: string[]): Observable<SalesChannelTable> {
-//   const httpParams = { params: new HttpParams({ fromString: channels.map(p => `channels=${p}`).join('&') }) };
-//   return this.httpService.get<SalesChannelTable>(`${this.i207ApiUrl}/${isbn}/sales`, httpParams);
-// }
