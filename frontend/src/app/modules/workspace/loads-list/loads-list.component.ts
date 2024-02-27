@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatSort, Sort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
-import { map, catchError, concatMap } from 'rxjs';
+import { map, catchError, concatMap, first, filter, switchMap } from 'rxjs';
 import { EMPTY } from 'rxjs/internal/observable/empty';
 import { LoadsList, LoadsListTable } from 'src/app/models/load.model';
+import { DialogService } from 'src/app/services/dialog.service';
 import { LoadService } from 'src/app/services/load.service';
 import { NotificationService } from 'src/app/services/notification.service';
 
@@ -32,7 +33,8 @@ export class LoadsListComponent implements OnInit {
 
   constructor(
     private readonly loadService: LoadService,
-    private readonly toastr: NotificationService
+    private readonly toastr: NotificationService,
+    private readonly dialogService: DialogService
   ) {}
 
   ngOnInit(): void {
@@ -60,16 +62,25 @@ export class LoadsListComponent implements OnInit {
   }
 
   public onDeleteClick(item: LoadsListTable) {
-    this.loadService
-      .deleteLoad(item._id)
+    this.dialogService
+      .openConfirmationDialog(
+        'Ви впевнені, що бажаєте видалити цей груз? Якщо ви натиснете \'Так\' операцію не можна буде відмінити.',
+        'Підтвердження видалення грузу'
+      )
       .pipe(
-        map((answer) => {
-          this.toastr.info(answer.message);
-          this.loadTableData();
-        }),
-        catchError((error) => {
-          this.toastr.badRequestError(error);
-          return EMPTY;
+        first(),
+        filter((confirmed) => confirmed),
+        switchMap(() => {
+          return this.loadService.deleteLoad(item._id).pipe(
+            map((answer) => {
+              this.toastr.info(answer.message);
+              this.loadTableData();
+            }),
+            catchError((error) => {
+              this.toastr.badRequestError(error);
+              return EMPTY;
+            })
+          );
         })
       )
       .subscribe();
@@ -89,4 +100,5 @@ export class LoadsListComponent implements OnInit {
       )
       .subscribe();
   }
+
 }

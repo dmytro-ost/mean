@@ -1,8 +1,17 @@
 <div class="container">
-  <header>HEADER       SECTION {{userInfo | json}} Ви: {{userRole.description}}<button type="submit" mat-raised-button color="primary" class="btn"
-      (click)="logout()">Вийти</button></header>
+  <header>
+    <div class="l-side"><img class="logo" src="../../../../assets/images/dostavka.png" alt="" srcset=""></div>
+    <div class="r-side">Ви зареєстровані як: <span>{{userRole.description}}</span><button type="submit"
+        mat-raised-button color="primary" class="btn" (click)="logout()">Вийти</button></div>
+  </header>
   <article>
-    <nav>
+    <nav *ngIf="userInfo.role === 'SHIPPER'">
+      <p>МЕНЮ ВІДПРАВНИКА</p>
+      <a routerLink="./"><button mat-raised-button color="primary" class="btn">Мої вантажі</button></a>
+      <a routerLink="./add"><button mat-raised-button color="primary" class="btn">Новий вантаж</button></a>
+    </nav>
+    <nav *ngIf="userInfo.role === 'DRIVER'">
+      <p>МЕНЮ ВОДІЯ</p>
       <a routerLink="./"><button mat-raised-button color="primary" class="btn">Мої вантажі</button></a>
       <a routerLink="./add"><button mat-raised-button color="primary" class="btn">Новий вантаж</button></a>
     </nav>

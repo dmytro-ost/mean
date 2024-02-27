@@ -1,0 +1,14 @@
+<div class="title" mat-dialog-title cdkDrag cdkDragHandle>
+  <h1>{{title}}</h1>
+</div>
+
+<div mat-dialog-content class="content">
+  <p>{{message}}</p>
+</div>
+
+<mat-divider></mat-divider>
+<div mat-dialog-actions class="action" [align]="'end'">
+  <button mat-raised-button color="warn" (click)="onDismiss()">Ні</button>
+  <button  mat-raised-button color="primary" (click)="onConfirm()">Так</button>
+</div>
+

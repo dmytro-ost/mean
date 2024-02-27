@@ -4,7 +4,15 @@
 }
 
 header{
-  padding: 25px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px 0px 20px;
+}
+
+.logo {
+  width: 300px;
+  height: auto;
 }
 
 article {
@@ -22,6 +30,11 @@ nav {
   flex-basis: 200px;
   background-color: orange;
 
+  p {
+    font-weight: 500;
+    text-align: center;
+  }
+
   .btn {
     width: 100%;
     margin-bottom: 5px;
@@ -31,4 +44,11 @@ nav {
 
 section {
   flex-grow: 1;
+}
+
+span {
+  text-transform: uppercase;
+  font-weight: 500;
+  text-decoration: underline;
+  margin-right: 10px;
 }

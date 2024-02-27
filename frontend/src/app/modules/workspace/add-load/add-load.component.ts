@@ -1,10 +1,13 @@
+import { Component, OnInit } from '@angular/core';
 import {
-  ChangeDetectionStrategy,
-  ChangeDetectorRef,
-  Component,
-  OnInit,
-} from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  FormGroupDirective,
+  NgForm,
+  Validators,
+} from '@angular/forms';
+import { ErrorStateMatcher } from '@angular/material/core';
 import { Router } from '@angular/router';
 import { EMPTY } from 'rxjs/internal/observable/empty';
 import { catchError, map } from 'rxjs/operators';
@@ -17,30 +20,66 @@ import { NotificationService } from 'src/app/services/notification.service';
   templateUrl: './add-load.component.html',
   styleUrls: ['./add-load.component.scss'],
 })
-export class AddLoadComponent implements OnInit {
+export class AddLoadComponent implements OnInit, ErrorStateMatcher {
   public createPayloadForm!: FormGroup;
 
   constructor(
     private readonly formBuilder: FormBuilder,
     private readonly toastr: NotificationService,
     private readonly loadService: LoadService,
-    private readonly router: Router,
+    private readonly router: Router
   ) {}
+
+  isErrorState(
+    control: FormControl | null,
+    form: FormGroupDirective | NgForm | null
+  ): boolean {
+    const isSubmitted = form && form.submitted;
+    return !!(
+      control &&
+      control.invalid &&
+      (control.dirty || control.touched || isSubmitted)
+    );
+  }
+
+  matcher = new ErrorStateMatcher();
 
   ngOnInit(): void {
     this.initForm();
   }
 
   private initForm() {
-    this.createPayloadForm = this.formBuilder.group({
-      name: ['', Validators.required],
-      payload: ['', Validators.required],
-      pickup: ['', Validators.required],
-      delivery: ['', Validators.required],
-      width: [0, Validators.required],
-      length: [0, Validators.required],
-      height: [0, Validators.required],
+    this.createPayloadForm = new FormGroup({
+      name: new FormControl('', [Validators.required]),
+      payload: new FormControl('0', [
+        Validators.required,
+        Validators.pattern(/^[0-9]\d*$/),
+      ]),
+      pickup: new FormControl('', Validators.required),
+      delivery: new FormControl('', Validators.required),
+      width: new FormControl('0', [
+        Validators.required,
+        Validators.pattern(/^[0-9]\d*$/),
+      ]),
+      length: new FormControl('0', [
+        Validators.required,
+        Validators.pattern(/^[0-9]\d*$/),
+      ]),
+      height: new FormControl('0', [
+        Validators.required,
+        Validators.pattern(/^[0-9]\d*$/),
+      ]),
     });
+
+    // this.createPayloadForm = this.formBuilder.group({
+    //   name: ['', Validators.required, Validators.maxLength(3)],
+    //   payload: ['', Validators.required],
+    //   pickup: ['', Validators.required],
+    //   delivery: ['', Validators.required],
+    //   width: [0, Validators.required],
+    //   length: [0, Validators.required],
+    //   height: [0, Validators.required],
+    // });
   }
 
   createPayload() {
@@ -51,7 +90,7 @@ export class AddLoadComponent implements OnInit {
 
     const load: Load = {
       name: this.createPayloadForm.controls['name'].value,
-      payload: this.createPayloadForm.controls['payload'].value,
+      payload: +this.createPayloadForm.controls['payload'].value,
       pickup_address: this.createPayloadForm.controls['pickup'].value,
       delivery_address: this.createPayloadForm.controls['delivery'].value,
       dimensions: {

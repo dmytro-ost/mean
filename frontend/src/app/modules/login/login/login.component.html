@@ -1,4 +1,7 @@
 <div class="container">
+  <div class="logo-contatiner">
+    <img class="logo" src="../../../../assets/images/dostavka.png" alt="" srcset="">
+  </div>
   <mat-tab-group>
     <mat-tab label="Увійти">
       <form [formGroup]="loginForm" (ngSubmit)="login()" class="form">
@@ -10,7 +13,7 @@
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Пароль</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="password" autocomplete="on" required>
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'"
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" type="button"
             [attr.aria-pressed]="hide">
             <mat-icon>
               {{hide ? 'visibility_off' : 'visibility'}}
@@ -33,7 +36,7 @@
         <mat-form-field class="full-width" appearance="fill">
           <mat-label>Пароль</mat-label>
           <input matInput [type]="hide ? 'password' : 'text'" formControlName="password"  required>
-          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Сховати пароль'"
+          <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Сховати пароль'" type="button"
             [attr.aria-pressed]="hide">
             <mat-icon>
               {{hide ? 'visibility_off' : 'visibility'}}

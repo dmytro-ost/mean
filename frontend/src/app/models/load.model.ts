@@ -1,6 +1,6 @@
 export interface Load {
   name: string;
-  payload: string;
+  payload: number;
   pickup_address: string;
   delivery_address: string;
   dimensions: {

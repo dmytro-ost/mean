@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class WorkspaceComponent implements OnInit {
 
   public userRole!: { role: string; description: string };
+  public userInfo = this.authService.getCurrentUserInfo();
 
   constructor(
     private readonly authService: AuthService,
@@ -19,7 +20,7 @@ export class WorkspaceComponent implements OnInit {
     this.userRole = this.authService.getRole();
   }
 
-  userInfo = this.authService.getCurrentUserInfo();
+
 
   public logout() {
     this.authService.setLogOut();
