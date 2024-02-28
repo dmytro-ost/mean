@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { ServerResponseMsg, ResponseJWT } from '../models/message.model';
+import { ServerResponseMsg } from '../models/message.model';
 import { HttpService } from './http.service';
 import config from 'src/config';
 import { Load, LoadsList } from '../models/load.model';

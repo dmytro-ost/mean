@@ -1,0 +1,31 @@
+<h2>Список моїх машин</h2>
+<table *ngIf="trucksList$ | async as truckList" class="table">
+  <thead>
+    <tr>
+      <th>№</th>
+      <th>Модель</th>
+      <th>Вигляд</th>
+      <th>Поточний статус</th>
+      <th>Я водій</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let truck of truckList.trucks; index as i; trackBy: trackByFn" >
+      <td>{{i+1}}</td>
+      <td>{{truck.type === 'SPRINTER' ? 'Спринтер': truck.type === 'SMALL STRAIGHT' ? 'Газель': 'Фура'}}</td>
+      <td><img
+          src="../../../../assets/images/{{truck.type === 'SPRINTER' ? 'sprinter': truck.type === 'SMALL STRAIGHT' ? 'gazel': 'truck'}}.png"
+          alt=""></td>
+      <td>{{truck.status === 'IS' ? 'Вільний': 'Загружений'}}</td>
+      <td>
+        <mat-radio-button color="primary" [value]="truck._id" [checked]="!!truck.assigned_to" (change)="radioSelected(truck._id)"></mat-radio-button>
+      </td>
+      <td>
+        <button mat-icon-button color="warn" (click)="deleteTruck(truck._id)" aria-label="Видалити авто">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+    </tr>
+  </tbody>
+</table>

@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { WorkspaceComponent } from './workspace/workspace.component';
 import { LoadsListComponent } from './loads-list/loads-list.component';
 import { AddLoadComponent } from './add-load/add-load.component';
+import { AddTruckComponent } from './add-truck/add-truck.component';
 
 
 const routes: Routes = [
@@ -15,8 +16,12 @@ const routes: Routes = [
         component: LoadsListComponent
       },
       {
-        path: 'add',
+        path: 'addload',
         component: AddLoadComponent
+      },
+      {
+        path: 'addtruck',
+        component: AddTruckComponent
       }
     ]
   }

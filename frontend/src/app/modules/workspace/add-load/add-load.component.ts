@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
   FormControl,
   FormGroup,
   FormGroupDirective,
@@ -24,7 +23,6 @@ export class AddLoadComponent implements OnInit, ErrorStateMatcher {
   public createPayloadForm!: FormGroup;
 
   constructor(
-    private readonly formBuilder: FormBuilder,
     private readonly toastr: NotificationService,
     private readonly loadService: LoadService,
     private readonly router: Router

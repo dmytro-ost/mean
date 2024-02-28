@@ -3,9 +3,11 @@ import { CommonModule } from '@angular/common';
 import { WorkspaceComponent } from './workspace/workspace.component';
 import { WorkspaceRoutingModule } from './workspace-routing.modules';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AuthService } from 'src/app/services/auth.service';
 import { AddLoadComponent } from './add-load/add-load.component';
 import { LoadsListComponent } from './loads-list/loads-list.component';
+import { LoadsListDriverComponent } from './loads-list-driver/loads-list-driver.component';
+import { LoadsListShipperComponent } from './loads-list-shipper/loads-list-shipper.component';
+import { AddTruckComponent } from './add-truck/add-truck.component';
 
 
 
@@ -13,7 +15,10 @@ import { LoadsListComponent } from './loads-list/loads-list.component';
   declarations: [
     WorkspaceComponent,
     AddLoadComponent,
-    LoadsListComponent
+    LoadsListComponent,
+    LoadsListDriverComponent,
+    LoadsListShipperComponent,
+    AddTruckComponent
   ],
   imports: [
     CommonModule,

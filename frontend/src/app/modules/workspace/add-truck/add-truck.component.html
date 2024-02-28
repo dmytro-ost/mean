@@ -1,0 +1,12 @@
+<h2>Виберіть модель авто</h2>
+<mat-radio-group [(ngModel)]="currentTruck" aria-labelledby="radio-group-label" class="radio-group">
+  <mat-radio-button class="radio-button" *ngFor="let truck of trucks" [value]="truck" color="primary">
+    <img class="image"
+      src="../../../../assets/images/{{truck === 'SPRINTER' ? 'sprinter': truck === 'SMALL STRAIGHT' ? 'gazel': 'truck'}}.png"
+      alt=""> {{truck === 'SPRINTER' ? 'Спринтер': truck === 'SMALL STRAIGHT' ? 'Газель': 'Фура'}}
+  </mat-radio-button>
+</mat-radio-group>
+<div>Вибрана модель: {{currentTruck === 'SPRINTER' ? 'Спринтер': currentTruck === 'SMALL STRAIGHT' ? 'Газель':
+  currentTruck === 'LARGE STRAIGHT' ? 'Фура': ''}}</div>
+
+<button type="submit" mat-raised-button color="primary" (click)="addTruck()">Додати машину</button>

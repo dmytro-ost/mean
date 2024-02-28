@@ -12,6 +12,7 @@ import { ToastrModule, ToastrService } from 'ngx-toastr';
 import { NotificationService } from './services/notification.service';
 import { JwtTokenInterceptor } from './core/jwt-token.interceptor';
 
+
 @NgModule({
   declarations: [
     AppComponent,

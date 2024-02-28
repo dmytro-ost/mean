@@ -1,3 +1,4 @@
+const path = require('path');
 require('dotenv').config();
 const express = require('express');
 const mongoose = require('mongoose');
@@ -20,6 +21,8 @@ app.use(
     'combined'
   )
 );
+
+app.use('/', express.static(path.join(__dirname, 'public')));
 
 const userRouter = require('./routers/userRouter');
 const authRouter = require('./routers/authRouter');

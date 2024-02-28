@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { UserRole } from 'src/app/models/user.model';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
@@ -9,8 +9,7 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class WorkspaceComponent implements OnInit {
 
-  public userRole!: { role: string; description: string };
-  public userInfo = this.authService.getCurrentUserInfo();
+  public userRole!: UserRole;
 
   constructor(
     private readonly authService: AuthService,

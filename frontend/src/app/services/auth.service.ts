@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { UserInfo } from '../models/user.model';
-import { ACCESS_TOKEN_KEY_NAME, LOGIN_ROUTE } from '../core/constants';
+import { UserInfo, UserRole } from '../models/user.model';
+import { LOGIN_ROUTE } from '../core/constants';
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { BehaviorSubject, Observable, map, of } from 'rxjs';
 import { Router, UrlTree } from '@angular/router';
@@ -32,7 +32,7 @@ export class AuthService {
     return !!this.getCurrentUserInfo()?.role;
   }
 
-  public getRole(): { role: string; description: string } {
+  public getRole(): UserRole {
     const user = this.getCurrentUserInfo();
 
     switch (user.role) {
