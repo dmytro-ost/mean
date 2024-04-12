@@ -203,7 +203,7 @@ paths:
             properties:
               email:
                 type: "string"
-                example: "kyrylo@gmail.com"
+                example: "dima@gmail.com"
       responses:
         "200":
           description: "Success"
@@ -832,7 +832,7 @@ definitions:
     properties:
       email:
         type: "string"
-        example: "kyrylo@gmail.com"
+        example: "dima@gmail.com"
       password:
         type: "string"
         example: "ve518dl3"
@@ -841,7 +841,7 @@ definitions:
     properties:
       email:
         type: "string"
-        example: "kyrylo@gmail.com"
+        example: "dima@gmail.com"
       password:
         type: "string"
         example: "ve518dl3"
@@ -857,7 +857,7 @@ definitions:
         example: "5099803df3f4948bd2f98391"
       email:
         type: "string"
-        example: "kyrylo@gmail.com"
+        example: "dima@gmail.com"
       created_date:
         type: "string"
         format: "date"

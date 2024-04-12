@@ -24,6 +24,8 @@ app.use(
 
 app.use('/', express.static(path.join(__dirname, 'public')));
 
+app.get('/test', (req, res) => res.status(200).json('Hello!'));
+
 const userRouter = require('./routers/userRouter');
 const authRouter = require('./routers/authRouter');
 const truckRouter = require('./routers/truckRouter');
