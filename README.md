@@ -1,1 +1,1 @@
-# mean
+# MEAN or BEAM
